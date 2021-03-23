@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:behaviors="clr-namespace:MyVocabularyCards.Behaviors"
+             mc:Ignorable="d"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             Title="My Vocabulary"
+             xmlns:control="clr-namespace:MyVocabularyCards.Controls"
+             x:Name="vocabListPage" 
+             x:Class="MyVocabularyCards.Views.VocabularyListPage"
+             Style="{StaticResource AppBackgroundStyle}">
+
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <behaviors:SelectedItemEventArgsToSelectedItemConverter x:Key="SelectedItemConverter"/>
+        </ResourceDictionary>
+
+        <Style TargetType="StackLayout">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup>
+                        <VisualState Name="Normal" />
+                        <VisualState Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="Transparent" />
+                                <!--<Setter TargetName="valueLabel" Property="Label.TextColor" Value="#009fb2" />-->
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="+" Command="{Binding AddVocabCommand}" IconImageSource="edit.png"/>
+    </ContentPage.ToolbarItems>
+    
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <StackLayout Grid.Row="0" Padding="10">
+            <Frame BackgroundColor="Transparent" Margin="2" CornerRadius="10" BorderColor="{StaticResource Color2}"
+                   Padding="0">
+                <control:SearchBarControl Placeholder="Search..." x:Name="searchWords" HeightRequest="30">
+                    <SearchBar.Behaviors>
+                        <behaviors:EventToCommandBehavior EventName="TextChanged"
+                                                      Command="{Binding SearchVocabCommand}"
+                                                      CommandParameter="{Binding Text, Source={x:Reference searchWords}}"/>
+                    </SearchBar.Behaviors>
+                </control:SearchBarControl>
+            </Frame>
+        </StackLayout>
+
+        <StackLayout Grid.Row="1">
+
+            <StackLayout Margin="10,10,10,0">
+                               
+                <!--**กดคำศัพท์ค้างแล้วจะโชว์เมนูให้ลบ-->
+
+                <!--<CollectionView x:Name="VocabCollection" 
+                            ItemsSource="{Binding VocabularyList}"
+                            SelectionMode="Single"
+                            SelectedItem="{Binding SelectedVocab, Mode=OneWayToSource}"
+                            >-->
+                    <!--<CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout>
+                                <SwipeView>
+                                    <SwipeView.RightItems>
+                                        <SwipeItemView  Command="{Binding Source={x:Reference vocabListPage}, Path=ViewModel.DeleteVocabCommand}"
+                                                    CommandParameter="{Binding .}">
+                                            <Grid WidthRequest="50">
+                                                <Image Source="delete.png"   
+                                                xct:IconTintColorEffect.TintColor="Red"
+                                                VerticalOptions="Center"
+                                                HorizontalOptions="Center"
+                                               />
+                                            </Grid>
+                                        </SwipeItemView>
+
+                                    </SwipeView.RightItems>
+                                    <Frame x:Name="test" Padding="5" Margin="2" CornerRadius="5" HeightRequest="20"
+                                       BackgroundColor="Transparent"
+                                       BorderColor="{StaticResource Color3}">
+                                        <Label x:Name="valueLabel" Text="{Binding WordMeaning}" 
+                                       TextColor="{StaticResource Color2}" 
+                                       FontSize="16"/>
+                                    </Frame>
+                                </SwipeView>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>-->
+
+                <ListView ItemsSource="{Binding VocabularyList}"
+              SelectedItem="{Binding SelectedVocab, Mode=TwoWay}"
+              HasUnevenRows="True"
+                          x:Name="collectionView"
+              SeparatorColor="Transparent">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <!--<ViewCell>
+                                <ViewCell.ContextActions>
+                                    <MenuItem IsDestructive="True"
+                                              Command="{Binding Source={x:Reference vocabListPage}, Path=ViewModel.DeleteVocabCommand}" 
+                                              CommandParameter="{Binding .}"
+                                              IconImageSource="baseline_delete_forever_white_18dp.png" 
+                                              />
+                                </ViewCell.ContextActions>
+                                --><!--<SwipeView>
+                                    <SwipeView.RightItems>
+                                        <SwipeItemView  Command="{Binding Source={x:Reference vocabListPage}, Path=ViewModel.DeleteVocabCommand}"
+                                                CommandParameter="{Binding .}">
+                                            <Grid WidthRequest="50">
+                                                <Image Source="trash.png"   
+                                                xct:IconTintColorEffect.TintColor="Red"
+                                                VerticalOptions="Center"
+                                                HorizontalOptions="Center"
+                                               />
+                                            </Grid>
+                                        </SwipeItemView>
+
+                                    </SwipeView.RightItems>
+                                    <Frame x:Name="test" Padding="5" Margin="2" CornerRadius="5" HeightRequest="20"
+                                       BackgroundColor="Transparent"
+                                       BorderColor="{StaticResource Color2}">
+                                        <Label x:Name="valueLabel" Text="{Binding WordMeaning}" 
+                                       TextColor="{StaticResource Color2}" 
+                                       FontSize="16"/>
+                                    </Frame>
+                                </SwipeView>--><!--
+                                
+                                
+                            </ViewCell>-->
+                       
+                            <ViewCell>
+                                <ViewCell.ContextActions>
+                                    <MenuItem IsDestructive="True"
+                                              Command="{Binding Source={x:Reference vocabListPage}, Path=ViewModel.DeleteVocabCommand}" 
+                                              CommandParameter="{Binding .}"
+                                              IconImageSource="baseline_delete_forever_white_18dp.png" 
+                                              />
+                                </ViewCell.ContextActions>
+                                <Frame x:Name="test" Padding="5" Margin="2" CornerRadius="5" HeightRequest="20"
+                                       BackgroundColor="Transparent"
+                                       BorderColor="{StaticResource Color2}">
+                                    <Label x:Name="valueLabel" Text="{Binding WordMeaning}" 
+                                           TextColor="{StaticResource Color2}" 
+                                           FontSize="16"/>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <ListView.Behaviors>
+                        <behaviors:EventToCommandBehavior Command="{Binding SelectVocabCommand}"
+                                                  EventName="ItemSelected"
+                                                  Converter="{StaticResource SelectedItemConverter}"/>
+                    </ListView.Behaviors>
+                </ListView>
+            </StackLayout>
+           
+        </StackLayout>
+    </Grid>
+    
+
+</ContentPage>

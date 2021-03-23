@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms" 
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+       mc:Ignorable="d"
+       xmlns:local="clr-namespace:MyVocabularyCards.Views"
+       Title="MyVocabularyCards"
+       x:Class="MyVocabularyCards.AppShell">
+
+    <!-- 
+        Styles and Resources 
+    -->
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Color x:Key="NavigationPrimary">White</Color>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.BackgroundColor" Value="{StaticResource NavigationPrimary}" />
+                <Setter Property="Shell.ForegroundColor" Value="{StaticResource Color2}" />
+                <Setter Property="Shell.TitleColor" Value="{StaticResource Color2}" />
+                <Setter Property="Shell.DisabledColor" Value="{StaticResource Color2}" />
+                <Setter Property="Shell.UnselectedColor" Value="Gray" />
+                <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="{StaticResource Color2}"/>
+                <Setter Property="Shell.TabBarUnselectedColor" Value="Gray"/>
+                <Setter Property="Shell.TabBarTitleColor" Value="{StaticResource Color2}"/>
+            </Style>
+            <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
+        </ResourceDictionary>
+    </Shell.Resources>
+
+    <TabBar x:Name="tabBar">
+        <Tab Title="Vocabulary" Icon="open_book.png" x:Name="vocabListPage">
+            <ShellContent ContentTemplate="{DataTemplate local:VocabularyListPage}"
+                          Style="{StaticResource BaseStyle}"/>
+        </Tab>
+        <Tab Title="Quiz" Icon="quiz.png" x:Name="quizPage">
+            <ShellContent ContentTemplate="{DataTemplate local:QuizPage}"
+                          Style="{StaticResource BaseStyle}"/>
+        </Tab>
+        <Tab Title="Word Cards" Icon="reading_book.png" x:Name="cardPage">
+            <ShellContent ContentTemplate="{DataTemplate local:LearnCardPage}" 
+                          Style="{StaticResource BaseStyle}"/>
+        </Tab>
+        <Tab Title="About" Icon="tab_about.png">
+            <ShellContent ContentTemplate="{DataTemplate local:AboutPage}" 
+                          Style="{StaticResource BaseStyle}"/>
+        </Tab>
+    </TabBar>
+    
+    
+    <!--<FlyoutItem x:Name="flyout"
+                Style="{StaticResource BaseStyle}" >
+        <ShellContent Title="Quiz" ContentTemplate="{DataTemplate local:QuizPage}"/>
+        <Tab Title="Vocabulary" Icon="open_book.png" x:Name="vocabListPage">
+            <ShellContent ContentTemplate="{DataTemplate local:VocabularyListPage}"
+                          Style="{StaticResource BaseStyle}"/>
+        </Tab>
+        <Tab Title="Quiz" Icon="quiz.png" x:Name="quizPage">
+            <ShellContent ContentTemplate="{DataTemplate local:QuizPage}"
+                          Style="{StaticResource BaseStyle}"/>
+        </Tab>
+        <Tab Title="Traning Card" Icon="reading_book.png" x:Name="cardPage">
+            <ShellContent ContentTemplate="{DataTemplate local:LearnCardPage}" 
+                          Style="{StaticResource BaseStyle}"/>
+        </Tab>
+        <Tab Title="About" Icon="tab_about.png">
+            <ShellContent ContentTemplate="{DataTemplate local:AboutPage}" 
+                          Style="{StaticResource BaseStyle}"/>
+        </Tab>
+    </FlyoutItem>
+    <MenuItem Text="Exit"  Clicked="MenuItem_Clicked" />-->
+
+
+    <!-- Optional Templates 
+    // These may be provided inline as below or as separate classes.
+
+    // This header appears at the top of the Flyout.
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <Grid>ContentHere</Grid>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
+
+    // ItemTemplate is for ShellItems as displayed in a Flyout
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <ContentView>
+                Bindable Properties: Title, Icon
+            </ContentView>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
+    // MenuItemTemplate is for MenuItems as displayed in a Flyout
+    <Shell.MenuItemTemplate>
+        <DataTemplate>
+            <ContentView>
+                Bindable Properties: Text, Icon
+            </ContentView>
+        </DataTemplate>
+    </Shell.MenuItemTemplate>
+
+    -->
+
+</Shell>

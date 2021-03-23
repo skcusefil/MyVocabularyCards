@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:themes = "clr-namespace:MyVocabularyCards.Themes;assembly=MyVocabularyCards"
+             x:Class="MyVocabularyCards.App">
+    <Application.Resources>
+
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <themes:LightTheme />
+            </ResourceDictionary.MergedDictionaries >
+        </ResourceDictionary>
+        
+        <!-- Background Color -->
+        <Style x:Key="AppBackgroundStyle" TargetType="ContentPage">
+            <Setter Property="Background" Value="Transparent"/>
+        </Style>
+
+        <!-- Colors -->
+        <Color x:Key="Color0">#ffffff</Color>
+        <Color x:Key="Color1">#707070</Color>
+        <Color x:Key="Color2">#ED553B</Color>
+        <Color x:Key="Color3">#173F5F</Color>
+        <Color x:Key="Color4">#043435</Color>
+        <Color x:Key="Color5">#dae5eb</Color>
+        
+        <!-- Button Style -->
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="{StaticResource Color3}"/>
+            <Setter Property="CornerRadius" Value="20"/>
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="WidthRequest" Value="100"/>
+            <Setter Property="Visual" Value="Material"/>
+        </Style>
+
+        <!-- Label STYLES Light -->
+        <Style x:Key="LabeStyleLight" TargetType="Label">
+            <Setter Property="TextColor" Value="White" />
+        </Style>
+
+        <!-- Label STYLES Dark -->
+        <Style x:Key="LabeStyleDark" TargetType="Label">
+            <Setter Property="TextColor" Value="{StaticResource Color3}" />
+        </Style>
+
+    </Application.Resources>
+</Application>

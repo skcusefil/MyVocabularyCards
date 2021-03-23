@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:control="clr-namespace:MyVocabularyCards.Controls"
+             Style="{StaticResource AppBackgroundStyle}"
+             x:Class="MyVocabularyCards.Views.VocabularyDetailPage">
+
+
+    <StackLayout Spacing="10">
+        <StackLayout Spacing="10">
+            <StackLayout Padding ="20,20">
+                <Label Text="Word" FontSize="20" TextColor="{StaticResource Color2}"/>
+                <control:EntryControl
+                                            Grid.Row="3"
+                                            Margin="0,0,0,20"
+                                            Padding="13"
+                                            BackgroundColor="White"
+                                            BorderThickness="2"
+                                            BorderColor="{StaticResource Color2}"
+                                            CornerRadius="10"
+                                            Placeholder="Write..."
+                                            TextColor="{StaticResource Color2}" 
+                                            PlaceholderColor="{StaticResource Color5}"
+                                            Text="{Binding Path=Vocabulary.Word}" 
+                                            />
+
+                <Label Text="Meaning" FontSize="20" TextColor="{StaticResource Color2}"/>
+                <control:EntryControl
+                                            Grid.Row="3"
+                                            Margin="0,0,0,20"
+                                            Padding="13"
+                                            BackgroundColor="White"
+                                            BorderThickness="2"
+                                            CornerRadius="10"
+                                            BorderColor="{StaticResource Color2}"
+                                            Placeholder="Write..."
+                                            TextColor="{StaticResource Color2}" 
+                                            PlaceholderColor="{StaticResource Color5}"
+                                            Text="{Binding Path=Vocabulary.Meaning}" 
+                                            />
+
+            </StackLayout>
+
+            <StackLayout Margin="30">
+                <Button Text="Save" Command="{Binding SaveCommand}"
+                            Style="{StaticResource ButtonStyle}" HorizontalOptions="CenterAndExpand"
+                            />
+            </StackLayout>
+
+        </StackLayout>
+
+        <!--<TableView>
+            <TableRoot>
+                <TableSection Title="Word">
+                    <EntryCell Label="Your word" Text="{Binding Path=Vocabulary.Word}"/>
+
+                </TableSection>
+                <TableSection Title="Word">
+                    <EntryCell Label="Your meaning" Text="{Binding Path=Vocabulary.Meaning}"
+                           />
+                </TableSection>
+                <TableSection>
+                    <ViewCell>
+                        <Button Text="Save" Command="{Binding SaveCommand}"
+                            Style="{StaticResource ButtonStyle}"
+                            />
+
+                    </ViewCell>
+                </TableSection>
+            </TableRoot>
+        </TableView>-->
+    
+    
+    </StackLayout>
+    
+</ContentPage>
